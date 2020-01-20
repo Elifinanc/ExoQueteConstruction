@@ -1,0 +1,56 @@
+using System;
+
+namespace ExoQueteLesConstructeur
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("First method: Write the number of floors that you want to calculate the height of your building ");
+            int choosenFloorCount = Convert.ToInt32(Console.ReadLine());
+            Building building = new Building(choosenFloorCount);
+            Console.WriteLine("Your building size is : " + building.GetSize());
+
+            Console.WriteLine("Second method: Write the number of floors that you want:");
+            int choosenFloorCount2 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("and write the building size that you want:");
+            double choosenBuildingSize = Convert.ToDouble(Console.ReadLine());
+            Building buildingB = new Building(choosenFloorCount2, choosenBuildingSize);
+            Console.WriteLine("You maximum floor size is: " + buildingB.GetFloorMaxSize());
+        }
+    }
+
+    public class Building
+    {
+        private int _FloorCount;
+        private double _Size;
+
+        public Building(int FloorCount, double Size)
+        {
+            _FloorCount = FloorCount;
+            _Size = Size;
+        }
+
+        public Building(int FloorCount)
+        {
+            _FloorCount = FloorCount;
+            _Size = _FloorCount * 3;
+        }
+
+
+        public double GetFloorMaxSize()
+        {
+            return _Size / _FloorCount;
+        }
+
+        public int GetFloorCount()
+        {
+            return _FloorCount;
+        }
+
+        public double GetSize()
+        {
+            return _Size;
+        }
+    }
+}
